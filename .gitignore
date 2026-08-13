@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Local model artifacts
+models/*.pkl
+models/*.joblib
+
+# Training datasets and generated samples
+data/dataset/
+*.npy
+
+# Generated audio
+*.mp3
+*.wav
+
+# Jupyter
+.ipynb_checkpoints/
