@@ -17,29 +17,54 @@ This project is presented as my original work. If you use or reference this proj
 
 A public GitHub repository is useful evidence of authorship because GitHub records commits, timestamps, repository history, and the account that published them. However, a GitHub repository by itself is **not absolute legal proof** of authorship or the date the underlying work was first created. For stronger provenance, keep the original project ZIP/files, dated backups, college submissions, project reports, screenshots, and other development records in addition to this repository.
 
+## 🎨 Project Visuals
+
+### Real-time system workflow
+
+![Real-time sign language detection workflow](docs/images/system-workflow.svg)
+
+This diagram explains the processing pipeline from webcam input through hand landmarks, feature extraction, prediction, Romanized translation, and speech output.
+
+### Hand landmark feature extraction
+
+![Hand landmark feature extraction](docs/images/feature-extraction.svg)
+
+The model pipeline represents detected hand landmarks as numeric features before classification.
+
+### Multilingual output
+
+![Multilingual Romanized output](docs/images/multilingual-output.svg)
+
+Hindi, Telugu and Tamil results are displayed using **English/Roman letters**, matching the project's UI approach rather than native-script characters.
+
+### Runtime output gallery
+
+![Runtime output gallery](docs/images/output-gallery.svg)
+
+The gallery documents representative labels demonstrated by the live application, including `dislike`, `call karo`, `shanti`, `kettukonga`, `done`, and `hello`.
+
+> **Important:** These are documentation graphics based on the project's demonstrated outputs. They are not fabricated screenshots and do not claim that every displayed example was produced by the model in the same session.
+
 ## 🎯 What the project does
 
-The application uses a webcam to detect one or two hands, extracts **21 landmarks per hand**, converts them into a normalized **126-feature vector**, predicts the sign, displays the result, and can speak the translated word.
+The application uses a webcam to detect one or two hands, extracts **21 landmarks per hand**, converts them into a normalized feature vector, predicts the sign, displays the result, and can speak the translated word.
 
 ### Real-time example
 
 ```text
-User shows: HELLO sign
+User shows a supported sign
         ↓
 Webcam captures frame
         ↓
 MediaPipe detects hand landmarks
         ↓
-126 normalized features
+Landmarks are normalized
         ↓
 Random Forest prediction
         ↓
-Detected sign: hello
+Detected sign / class
         ↓
-English: hello
-Hindi: namaste
-Telugu: namaste
-Tamil: vanakkam
+Selected language translation
         ↓
 🔊 Speech output
 ```
@@ -48,14 +73,37 @@ Tamil: vanakkam
 
 - Real-time webcam recognition
 - Single- and dual-hand landmark processing
-- 126 normalized landmark features
+- Hand-landmark feature extraction
 - Random Forest classifier
 - Confidence threshold and temporal smoothing
 - English, Hindi, Telugu and Tamil output
+- **Romanized multilingual text** using English letters
 - Text-to-speech support
 - Dataset collection utility
 - Model training pipeline
 - Clearly separated source, data, models, documentation and outputs
+
+## 🗣️ Multilingual Output Format
+
+The project represents Hindi, Telugu and Tamil output using **English/Roman letters**, rather than native-script characters.
+
+Examples from the project's language map:
+
+| Detected sign | English | Hindi | Telugu | Tamil |
+|---|---|---|---|---|
+| `hello` | hello | namaste | namaste | vanakkam |
+| `thank_you` | thank you | dhanyavaad | dhanyavadamulu | nandri |
+| `yes` | yes | haan | avunu | aam |
+| `no` | no | nahi | kaadu | illai |
+| `eat` | eat | khaana | tina | sapidu |
+| `water` | water | paani | neellu | thanni |
+| `call` | call | call karo | call cheyandi | call seyyunga |
+| `done` | done | ho gaya | aipoyindi | mudichitu irukku |
+| `peace` | peace | shanti | shanti | shanthiy |
+| `listen` | listen | suno | vinandi | kettukonga |
+| `you` | you | aap | meeru | neengal |
+
+All examples above are written with English/Roman letters so they remain readable without requiring native-language fonts.
 
 ## 🛠️ Technology Stack
 
@@ -88,7 +136,14 @@ sign-language-detection/
 ├── models/                   # Trained model documentation/location
 ├── outputs/                  # Runtime/evaluation examples
 ├── examples/                 # Demonstration workflows
-└── docs/                     # Detailed technical documentation
+└── docs/
+    ├── README.md             # Documentation index
+    ├── project-overview.md   # Technical overview
+    └── images/               # Professional project visuals
+        ├── system-workflow.svg
+        ├── feature-extraction.svg
+        ├── multilingual-output.svg
+        └── output-gallery.svg
 ```
 
 ## ▶️ Quick Start
@@ -129,25 +184,25 @@ pip install -r requirements.txt
 4. The model is saved under `models/` locally.
 5. Run live inference and evaluate supported signs.
 
-The original project contains thousands of generated `.npy` samples. They are intentionally excluded from the public source repository to keep it maintainable.
+The original project contains generated `.npy` samples. They are intentionally excluded from the public source repository to keep it maintainable.
 
-## 📊 Current Sign Vocabulary
+## 📊 Sign Vocabulary
 
-The trained label set contains 41 classes, including `hello`, `hi`, `thank_you`, `yes`, `no`, `please`, `water`, `help`, `stop`, `sorry`, `good`, `friend`, `school`, `work`, `you`, `your`, and others.
+The project language map contains a broad vocabulary including `hello`, `hi`, `thank_you`, `yes`, `no`, `please`, `what`, `eat`, `water`, `sorry`, `good`, `help`, `stop`, `wait`, `go`, `call`, `completed`, `done`, `bad`, `name`, `where`, `why`, `peace`, `dislike`, `need`, `work`, `home`, `school`, `friend`, `listen`, `super`, `more`, `my`, `is`, `how`, `you`, `your`, and `there`.
 
 ## 📈 Example Output
 
 ```text
-Input gesture → HELLO
-Prediction    → hello
-English       → hello
-Hindi         → namaste
-Telugu        → namaste
-Tamil         → vanakkam
+Input gesture → supported sign
+Prediction    → detected class
+English       → English label
+Hindi         → Romanized Hindi
+Telugu        → Romanized Telugu
+Tamil         → Romanized Tamil
 Audio         → generated speech
 ```
 
-These are representative examples, not a claim of guaranteed accuracy for every webcam frame.
+These are representative examples; actual predictions depend on the trained model, camera conditions, hand position, lighting and background.
 
 ## 🔒 Repository Hygiene
 
