@@ -174,7 +174,7 @@ All examples are written with English/Roman letters so they remain readable with
 ## 📁 Professional Project Structure
 
 ```text
-sign-language-detection/
+sign-language-recognization/
 │
 ├── README.md                 # Project overview + authorship information
 ├── .gitignore                # Git exclusions
@@ -204,8 +204,8 @@ sign-language-detection/
 ## ▶️ Quick Start
 
 ```bash
-git clone https://github.com/Jaswanth-36/sign-language-detection.git
-cd sign-language-detection
+git clone https://github.com/Jaswanth-36/sign-language-recognization.git
+cd sign-language-recognization
 python -m venv .venv
 ```
 
