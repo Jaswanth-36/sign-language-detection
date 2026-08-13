@@ -1,89 +1,100 @@
-# Sign Language Detection & Speech System
+# 🤟 Sign Language Detection & Speech System
 
-A real-time computer-vision application that recognizes hand signs from a webcam using MediaPipe hand landmarks and a Random Forest classifier, then displays and speaks the recognized meaning in multiple languages.
+Real-time sign-language recognition using **MediaPipe hand landmarks + Random Forest**, with multilingual text and speech output.
+
+## 🎯 What the project does
+
+The application uses a webcam to detect one or two hands, extracts **21 landmarks per hand**, converts them into a normalized **126-feature vector**, predicts the sign, displays the result, and can speak the translated word.
+
+### Real-time example
+
+```text
+User shows:  👋  HELLO sign
+        ↓
+Webcam captures frame
+        ↓
+MediaPipe detects hand landmarks
+        ↓
+126 normalized features
+        ↓
+Random Forest prediction
+        ↓
+Detected sign: hello
+        ↓
+English: hello
+Hindi: namaste
+Telugu: namaste
+Tamil: vanakkam
+        ↓
+🔊 Speech output
+```
 
 ## ✨ Features
 
-- Real-time webcam-based sign recognition
-- Dual-hand landmark processing (126 normalized features)
-- MediaPipe hand landmark tracking
-- Random Forest classification
-- Prediction confidence thresholding and temporal smoothing
-- Text-to-speech output
-- Language switching between English, Hindi, Telugu, and Tamil
-- Dataset collection utility for creating new training samples
-- Separate training and live-inference scripts
+- Real-time webcam recognition
+- Single- and dual-hand landmark processing
+- 126 normalized landmark features
+- Random Forest classifier
+- Confidence threshold and temporal smoothing
+- English, Hindi, Telugu and Tamil output
+- Text-to-speech support
+- Dataset collection utility
+- Model training pipeline
+- Clearly separated source, data, models, documentation and outputs
 
-## 🧠 How It Works
+## 🧠 Technology Stack
 
-```text
-Webcam
-  ↓
-MediaPipe Hand Tracking
-  ↓
-21 landmarks × up to 2 hands
-  ↓
-Wrist-centered normalization
-  ↓
-126-feature vector
-  ↓
-Random Forest classifier
-  ↓
-Stable sign prediction
-  ↓
-Translated text + speech
-```
+| Area | Technology |
+|---|---|
+| Language | Python |
+| Computer vision | OpenCV |
+| Hand tracking | MediaPipe |
+| Numerical processing | NumPy |
+| Machine learning | scikit-learn Random Forest |
+| Model storage | Joblib |
+| Speech | Edge TTS / pyttsx3 |
 
-The application uses normalized hand landmarks instead of raw images. This makes the model lightweight and reduces dependence on background and lighting compared with image-only approaches.
-
-## 🛠️ Technologies
-
-- Python
-- OpenCV
-- MediaPipe
-- NumPy
-- scikit-learn
-- Joblib
-- Edge TTS
-- Playsound
-
-## 📁 Project Structure
+## 📁 Professional Project Structure
 
 ```text
 sign-language-detection/
-├── README.md
-├── LICENSE
-├── .gitignore
-├── requirements.txt
-├── app.py                 # Main real-time application
-├── test_live.py           # Live inference/testing script
-├── train_model.py         # Model training pipeline
-├── auto_capture.py        # Webcam dataset collection utility
-├── audio_manager.py       # Text-to-speech handling
-├── language_map.py        # Multilingual sign translations
-├── utils/
-│   ├── __init__.py
-│   ├── hand_tracking.py   # MediaPipe hand tracking
-│   └── landmarks.py       # Landmark normalization
-├── models/
-│   └── README.md          # Model artifact instructions
-├── data/
-│   └── README.md          # Dataset instructions
-└── docs/
+│
+├── README.md                 # Main project documentation
+├── LICENSE                   # MIT license
+├── .gitignore                # Files excluded from Git
+├── requirements.txt          # Python dependencies
+│
+├── code/                     # All application source code
+│   ├── app/                  # Live application and testing
+│   │   └── test_live.py
+│   ├── training/             # Training and dataset collection
+│   │   ├── train_model.py
+│   │   └── auto_capture.py
+│   ├── services/             # Audio and language services
+│   │   ├── audio_manager.py
+│   │   └── language_map.py
+│   └── utils/                # Reusable computer-vision utilities
+│       ├── hand_tracking.py
+│       └── landmarks.py
+│
+├── data/                     # Training-data documentation/location
+│   └── README.md
+│
+├── models/                   # Trained model documentation/location
+│   └── README.md
+│
+├── outputs/                  # Runtime/evaluation outputs
+│   └── README.md
+│
+├── examples/                 # Demonstration assets
+│   └── README.md
+│
+└── docs/                     # Detailed documentation
+    ├── README.md
     └── project-overview.md
 ```
 
-## 🌐 Supported Signs
-
-The current trained label set contains 41 classes:
-
-`Home`, `bad`, `call`, `completed`, `dislike`, `done`, `eat`, `friend`, `go`, `good`, `hello`, `help`, `hi`, `how`, `i don't know`, `is`, `keep quite`, `listen`, `more`, `my`, `name`, `need`, `nice to meet you`, `no`, `peace`, `please`, `school`, `sorry`, `stop`, `super`, `thank_you`, `there`, `wait`, `water`, `what`, `where`, `why`, `work`, `yes`, `you`, `your`.
-
-> Note: the label `keep quite` is retained because it is part of the existing trained dataset; it can be renamed in a future retraining pass if desired.
-
-## ⚙️ Installation
-
-Python 3.10 or 3.11 is recommended for the current MediaPipe/scikit-learn stack.
+## ▶️ Quick Start
 
 ```bash
 git clone https://github.com/Jaswanth-36/sign-language-detection.git
@@ -91,16 +102,10 @@ cd sign-language-detection
 python -m venv .venv
 ```
 
-### Windows
+Windows:
 
 ```bash
 .venv\Scripts\activate
-```
-
-### macOS / Linux
-
-```bash
-source .venv/bin/activate
 ```
 
 Install dependencies:
@@ -109,27 +114,17 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## 🤖 Model
-
-The application expects the trained model at:
+Before running inference, place your trained model at:
 
 ```text
 models/sign_dual_model.pkl
 ```
 
-The trained model is a binary artifact and is intentionally kept out of the source-code commit in this cleaned repository. See `models/README.md` for how to add or regenerate it.
+Then run the live application from the project root using the appropriate Python entry point documented in `code/app/`.
 
-## ▶️ Run the Application
+## 🎮 Real-Time Controls
 
-After placing the trained model at `models/sign_dual_model.pkl`:
-
-```bash
-python app.py
-```
-
-Keyboard controls:
-
-| Key | Language |
+| Key | Action |
 |---|---|
 | `1` | English |
 | `2` | Hindi |
@@ -137,57 +132,66 @@ Keyboard controls:
 | `4` | Tamil |
 | `q` | Quit |
 
-## 🧪 Train the Model
-
-Place landmark `.npy` samples under:
+Example console output:
 
 ```text
-data/dataset/<sign-name>/
+Sign Language Detection - Live Test
+1-English | 2-Hindi | 3-Telugu | 4-Tamil | q-Quit
+Switched to Telugu
+Detected sign: hello
+Speech: namaste
 ```
 
-Then run:
+> Console output is an example of the intended runtime interaction; exact predictions and accuracy depend on the webcam, environment and trained model.
 
-```bash
-python train_model.py
+## 🧪 Training Workflow
+
+1. Collect landmark samples with `code/training/auto_capture.py`.
+2. Samples are stored locally under `data/dataset/<sign>/`.
+3. Train the Random Forest model with `code/training/train_model.py`.
+4. The training script evaluates the held-out test split and saves `models/sign_dual_model.pkl`.
+5. Run live inference and test the supported signs.
+
+The original project contains thousands of generated `.npy` samples. They are intentionally excluded from the public source repository to keep it maintainable. The expected dataset structure is documented in `data/README.md`.
+
+## 📊 Current Sign Vocabulary
+
+The trained label set contains 41 classes, including common signs such as `hello`, `hi`, `thank_you`, `yes`, `no`, `please`, `water`, `help`, `stop`, `sorry`, `good`, `friend`, `school`, `work`, `you`, `your`, and others.
+
+## 📈 Example Output
+
+```text
+Input gesture → hello
+Confidence   → ≥ 0.55 threshold
+Prediction   → hello
+English      → hello
+Hindi        → namaste
+Telugu       → namaste
+Tamil        → vanakkam
+Audio        → generated speech
 ```
 
-The training script loads 126-feature landmark vectors, performs a stratified train/test split, trains a Random Forest classifier, reports test accuracy, and saves the model as `models/sign_dual_model.pkl`.
+These are representative examples, not a claim of guaranteed accuracy for every webcam frame.
 
-## 📷 Collect New Training Samples
+## 🔒 Repository Hygiene
 
-Edit `SIGN_NAME` and `SAMPLES` in `auto_capture.py`, then run:
-
-```bash
-python auto_capture.py
-```
-
-The webcam utility saves normalized landmark vectors as `.npy` files under the selected sign directory.
-
-## 🔊 Speech Output
-
-The application uses Edge TTS with a neural English voice by default and `playsound` for playback. An internet connection may be required when Edge TTS generates speech.
-
-## 📊 Dataset
-
-The original project contains a large collection of landmark `.npy` samples. These generated training artifacts are intentionally not committed to the public source repository. See `data/README.md` for the recommended dataset workflow.
+Large generated datasets, local `.pkl`/`.joblib` models, temporary audio, caches, IDE files and other generated artifacts are excluded through `.gitignore`. This keeps the public repository focused on reproducible source code and documentation.
 
 ## 🚀 Future Improvements
 
-- Add a reproducible dataset download/versioning workflow
-- Add automated evaluation metrics and a confusion matrix
-- Add configurable confidence thresholds
-- Improve multilingual speech voices
-- Add a graphical user interface
-- Package the application for Windows
-- Add automated tests and CI
-- Version trained models separately from source code
+- Add automated unit/integration tests
+- Add model evaluation reports and confusion matrix
+- Add a downloadable versioned model release
+- Add a web interface
+- Improve multilingual voices
+- Expand sign vocabulary
+- Add CI for code quality and testing
 
 ## 👨‍💻 Author
 
-**Jaswanth Neerukattu**
+**Jaswanth Neerukattu**  
+GitHub: [Jaswanth-36](https://github.com/Jaswanth-36)
 
-GitHub: [@Jaswanth-36](https://github.com/Jaswanth-36)
+## 📄 License
 
----
-
-This project is intended for educational and research purposes.
+Released under the MIT License. See `LICENSE` for details.
