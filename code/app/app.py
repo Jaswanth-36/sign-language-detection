@@ -24,6 +24,7 @@ LANG_KEYS = {
     ord("3"): ("te", "Telugu"),
     ord("4"): ("ta", "Tamil"),
 }
+current_lang, current_lang_name = "en", "English"
 
 if not MODEL_PATH.exists():
     raise FileNotFoundError(
@@ -45,6 +46,7 @@ cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FPS, 15)
 
 if not cap.isOpened():
+    audio.cleanup()
     raise RuntimeError("Unable to open the default webcam (camera index 0).")
 
 print("SIGN LANGUAGE RECOGNIZATION")
