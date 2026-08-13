@@ -1,14 +1,14 @@
-# 🤟 Sign Language Detection & Speech System
+# 🤟 SIGN LANGUAGE RECOGNITION
 
 **Created and developed by Jaswanth Neerukattu.**
 
-A personal machine-learning and computer-vision project for real-time sign-language recognition using a webcam, MediaPipe hand landmarks, and a Random Forest classifier, with multilingual text and speech output.
+A personal machine-learning and computer-vision project for real-time sign language recognition using a webcam, MediaPipe hand landmarks, and a Random Forest classifier, with multilingual text and speech output.
 
 ## 📌 Project Showcase
 
-![Sign Language Detection & Speech System — Project Showcase](docs/images/project-showcase.png.png)
+![SIGN LANGUAGE RECOGNITION — Project Showcase](docs/images/project-showcase.png.png)
 
-**A professional visual overview of the project architecture, machine-learning pipeline, multilingual output and key capabilities.**
+**A professional visual overview of the SIGN LANGUAGE RECOGNITION project architecture, machine-learning pipeline, multilingual output and key capabilities.**
 
 > This showcase is a documentation graphic created to explain the project. It is not presented as a runtime screenshot or as measured model-performance evidence.
 
@@ -29,7 +29,7 @@ A public GitHub repository is useful evidence of authorship because GitHub recor
 
 ### 1. Real-time system workflow
 
-![Real-time sign language detection workflow](docs/images/system-workflow.svg)
+![Real-time sign language recognition workflow](docs/images/system-workflow.svg)
 
 The system follows a complete computer-vision and machine-learning pipeline:
 
@@ -46,7 +46,7 @@ Feature Vector
      ↓
 Random Forest Classifier
      ↓
-Detected Sign
+Recognized Sign
      ↓
 Language Mapping
      ↓
@@ -73,9 +73,9 @@ The gallery documents representative labels demonstrated by the live application
 
 > **Important:** These are documentation graphics based on demonstrated project outputs. They are not fabricated screenshots and do not claim that every displayed example was produced by the model in the same session.
 
-## 🎯 What the project does
+## 🎯 What the Project Does
 
-The application uses a webcam to detect one or two hands, extracts **21 landmarks per hand**, normalizes the landmark coordinates, predicts the sign with a trained Random Forest classifier, displays the result, maps it to the selected language, and can generate speech output.
+**SIGN LANGUAGE RECOGNITION** uses a webcam to detect one or two hands, extracts **21 landmarks per hand**, normalizes the landmark coordinates, predicts the sign with a trained Random Forest classifier, displays the recognized sign, maps it to the selected language, and can generate speech output.
 
 ### Real-time example
 
@@ -88,9 +88,9 @@ MediaPipe detects hand landmarks
         ↓
 Landmarks are normalized
         ↓
-Random Forest prediction
+Random Forest recognition
         ↓
-Detected sign / class
+Recognized sign / class
         ↓
 Selected language translation
         ↓
@@ -99,7 +99,7 @@ Selected language translation
 
 ## ✨ Key Features
 
-- Real-time webcam recognition
+- Real-time webcam sign recognition
 - Single- and dual-hand landmark processing
 - Hand-landmark feature extraction
 - Random Forest classification
@@ -125,13 +125,13 @@ MediaPipe identifies the hand region and extracts landmark coordinates.
 
 The detected landmarks are normalized so that the model can focus on hand geometry rather than absolute camera position.
 
-### Step 4 — Classification
+### Step 4 — Recognition
 
-The processed numerical features are passed to the trained **Random Forest classifier** to predict a supported sign class.
+The processed numerical features are passed to the trained **Random Forest classifier** to recognize a supported sign class.
 
 ### Step 5 — Language Mapping
 
-The detected class is converted into the selected language using the project's language mapping.
+The recognized class is converted into the selected language using the project's language mapping.
 
 ### Step 6 — Speech
 
@@ -143,7 +143,7 @@ The project represents Hindi, Telugu and Tamil output using **English/Roman lett
 
 Examples from the project's language map:
 
-| Detected sign | English | Hindi | Telugu | Tamil |
+| Recognized sign | English | Hindi | Telugu | Tamil |
 |---|---|---|---|---|
 | `hello` | hello | namaste | namaste | vanakkam |
 | `thank_you` | thank you | dhanyavaad | dhanyavadamulu | nandri |
@@ -167,7 +167,7 @@ All examples are written with English/Roman letters so they remain readable with
 | Computer vision | OpenCV | Webcam capture and frame processing |
 | Hand tracking | MediaPipe | Hand landmark detection |
 | Numerical processing | NumPy | Feature processing and arrays |
-| Machine learning | scikit-learn Random Forest | Sign classification |
+| Machine learning | scikit-learn Random Forest | Sign recognition |
 | Model storage | Joblib | Saving/loading trained models |
 | Speech | Edge TTS / pyttsx3 | Audio output |
 
@@ -245,19 +245,19 @@ Generated dataset samples are intentionally excluded from the public source repo
 
 The project language map contains a broad vocabulary including `hello`, `hi`, `thank_you`, `yes`, `no`, `please`, `what`, `eat`, `water`, `sorry`, `good`, `help`, `stop`, `wait`, `go`, `call`, `completed`, `done`, `bad`, `name`, `where`, `why`, `peace`, `dislike`, `need`, `work`, `home`, `school`, `friend`, `listen`, `super`, `more`, `my`, `is`, `how`, `you`, `your`, and `there`.
 
-## 📈 Example Output
+## 📈 Example Recognition Output
 
 ```text
 Input gesture → supported sign
-Prediction    → detected class
-English       → English label
-Hindi         → Romanized Hindi
-Telugu        → Romanized Telugu
-Tamil         → Romanized Tamil
-Audio         → generated speech
+Recognition    → detected class
+English        → English label
+Hindi          → Romanized Hindi
+Telugu         → Romanized Telugu
+Tamil          → Romanized Tamil
+Audio          → generated speech
 ```
 
-These are representative examples; actual predictions depend on the trained model, camera conditions, hand position, lighting and background.
+These are representative examples; actual recognition depends on the trained model, camera conditions, hand position, lighting and background.
 
 ## 🔒 Repository Hygiene
 
@@ -281,4 +281,4 @@ This repository does **not** grant a general open-source license. Do not assume 
 
 ---
 
-**Project created and developed by Jaswanth Neerukattu.**
+**SIGN LANGUAGE RECOGNITION — Created and developed by Jaswanth Neerukattu.**
