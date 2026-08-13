@@ -1,0 +1,16 @@
+Example runtime output
+======================
+
+Sign Language Detection - Live Test
+1-English | 2-Hindi | 3-Telugu | 4-Tamil | q-Quit
+
+Example interaction:
+Gesture: HELLO
+Prediction: hello
+English: hello
+Hindi: namaste
+Telugu: namaste
+Tamil: vanakkam
+Audio: speech generated
+
+Note: This is a demonstration output. Actual predictions and confidence depend on the trained model, webcam quality, lighting, hand position and background.
