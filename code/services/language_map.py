@@ -1,4 +1,4 @@
-"""Multilingual labels for recognized sign-language classes."""
+"""Multilingual Romanized labels for recognized sign-language classes."""
 
 LANGUAGE_MAP = {
     "hello": {"en": "hello", "hi": "namaste", "te": "namaste", "ta": "vanakkam"},
@@ -29,10 +29,10 @@ LANGUAGE_MAP = {
     "dislike": {"en": "dislike", "hi": "pasand nahi", "te": "ishtam ledu", "ta": "isaiyillai"},
     "need": {"en": "need", "hi": "zaroorat", "te": "avasyam", "ta": "aavashyam"},
     "work": {"en": "work", "hi": "kaam", "te": "panulu", "ta": "velai"},
-    "Home": {"en": "home", "hi": "ghar", "te": "illu", "ta": "veedu"},
+    "home": {"en": "home", "hi": "ghar", "te": "illu", "ta": "veedu"},
     "school": {"en": "school", "hi": "school", "te": "school", "ta": "school"},
     "friend": {"en": "friend", "hi": "dost", "te": "snehitudu", "ta": "thozhan"},
-    "keep quite": {"en": "keep quiet", "hi": "chup raho", "te": "aadaagaa undandi", "ta": "saathiyama irunga"},
+    "keep quiet": {"en": "keep quiet", "hi": "chup raho", "te": "aadaagaa undandi", "ta": "saathiyama irunga"},
     "listen": {"en": "listen", "hi": "suno", "te": "vinandi", "ta": "kettukonga"},
     "super": {"en": "super", "hi": "shandar", "te": "ati uttamam", "ta": "athigam nalla"},
     "more": {"en": "more", "hi": "aur", "te": "inkem", "ta": "inimelum"},
